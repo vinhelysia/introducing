@@ -1,3 +1,9 @@
+// public/ paths need Vite BASE_URL (e.g. /introducing/ on GitHub Pages).
+export function asset(path) {
+  const base = import.meta.env.BASE_URL;
+  return `${base}${String(path).replace(/^\//, "")}`;
+}
+
 export const me = {
   name: "VinhElysia",
   role: "CS student · builder · Genshin creator",
@@ -8,7 +14,7 @@ export const me = {
 
 // Home hero background — swap the file in public/img/ anytime.
 export const hero = {
-  src: "/img/hero-genshin.jpg",
+  src: asset("img/hero-genshin.jpg"),
   alt: "Inazuma at sunset, photo from Genshin Impact",
 };
 
@@ -55,7 +61,7 @@ export const whatIDo = [
 
 export const about = {
   portrait: {
-    src: "/img/portrait.png",
+    src: asset("img/portrait.png"),
     alt: "VinhElysia avatar",
   },
   // Write these like you talk. Each string is one paragraph.
@@ -132,7 +138,7 @@ export const projects = {
       tags: ["Godot", "GDScript", "Cogito"],
       url: "https://github.com/vinhelysia/godot-fps-cogito",
       img: {
-        src: "/img/cogito.svg",
+        src: asset("img/cogito.svg"),
         alt: "Placeholder art for the Godot FPS project",
       },
     },
@@ -146,7 +152,7 @@ export const projects = {
       tags: ["TypeScript", "Web"],
       url: "https://vinhelysia.github.io/genshin-sheet-library/",
       img: {
-        src: "/img/sheet-library.jpg",
+        src: asset("img/sheet-library.jpg"),
         alt: "Genshin Sheet Library hero — mountain landscape with sheet library title",
       },
     },
@@ -158,7 +164,7 @@ export const projects = {
       tags: ["TypeScript", "Web"],
       url: "https://vinhelysia.github.io/sereniteapot-showcase/",
       img: {
-        src: "/img/serenitea.jpg",
+        src: asset("img/serenitea.jpg"),
         alt: "Serenitea Pot Showcase hero — night cave teapot archive",
       },
     },

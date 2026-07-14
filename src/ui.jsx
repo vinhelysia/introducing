@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { asset } from "./content";
 
 // Numbered section header. "01 / ABOUT" with a hairline under it.
 export function Section({ num, title, children, id, border = true }) {
@@ -180,15 +181,15 @@ function IconEmail({ className }) {
 // Skill logos — original Simple Icons SVGs in /public/img/skills/
 // Masked so they pick up site ink color.
 const skillIconSrc = {
-  Rust: "/img/skills/rust.svg",
-  "C++": "/img/skills/cplusplus.svg",
-  "C#": "/img/skills/csharp.svg",
-  GDScript: "/img/skills/godot.svg",
-  Python: "/img/skills/python.svg",
-  Git: "/img/skills/git.svg",
-  Kotlin: "/img/skills/kotlin.svg",
-  TypeScript: "/img/skills/typescript.svg",
-  React: "/img/skills/react.svg",
+  Rust: asset("img/skills/rust.svg"),
+  "C++": asset("img/skills/cplusplus.svg"),
+  "C#": asset("img/skills/csharp.svg"),
+  GDScript: asset("img/skills/godot.svg"),
+  Python: asset("img/skills/python.svg"),
+  Git: asset("img/skills/git.svg"),
+  Kotlin: asset("img/skills/kotlin.svg"),
+  TypeScript: asset("img/skills/typescript.svg"),
+  React: asset("img/skills/react.svg"),
 };
 
 /** Skill chips with official monochrome logos. */
