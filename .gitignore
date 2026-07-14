@@ -4,6 +4,7 @@ dist
 .agent
 .agents
 .claude
+.claude-flow
 .codex
 .grok
 .DS_Store
