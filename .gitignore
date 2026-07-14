@@ -1,0 +1,10 @@
+node_modules
+dist
+.vercel
+.agent
+.agents
+.claude
+.codex
+.grok
+.DS_Store
+*.local
