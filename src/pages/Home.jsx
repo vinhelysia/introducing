@@ -1,7 +1,7 @@
 import { me, whatIDo, hero, projects, youtube } from "../content";
 import { Section, Card, SmartLink } from "../ui";
 
-// Fixed petal set — no JS random, no re-render thrash. CSS does the fall.
+// Fixed petal set - no JS random, no re-render thrash. CSS does the fall.
 const PETALS = [
   { left: "6%", delay: "0s", duration: "11s", size: 11, drift: 28, spin: 160 },
   { left: "14%", delay: "2.2s", duration: "13s", size: 8, drift: -22, spin: -200 },
@@ -69,11 +69,7 @@ export default function Home() {
         <SakuraPetals />
 
         <div className="home-hero-copy site-shell">
-          <p className="home-hero-role">{me.role}</p>
-
-          <h1 className="home-hero-title">
-            {me.tagline || me.name}
-          </h1>
+          <h1 className="home-hero-title">{me.tagline || me.name}</h1>
 
           {me.sub ? <p className="home-hero-sub">{me.sub}</p> : null}
 
@@ -113,11 +109,12 @@ export default function Home() {
               blurb={p.blurb}
               tags={p.tags}
               img={p.img}
+              media
               cta={p.url ? "Open" : null}
             />
           ))}
         </div>
-        <MoreLink to="/projects">All projects</MoreLink>
+        <MoreLink to="/projects">All projects →</MoreLink>
       </Section>
 
       <Section num="03" title="Popular videos">
@@ -135,7 +132,7 @@ export default function Home() {
             />
           ))}
         </div>
-        <MoreLink to="/content">All content</MoreLink>
+        <MoreLink to="/content">All content →</MoreLink>
       </Section>
     </>
   );

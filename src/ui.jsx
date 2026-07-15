@@ -7,15 +7,11 @@ export function Section({ num, title, children, id, border = true }) {
   return (
     <section
       id={id}
-      className={`${border ? "border-t border-line " : ""}py-12 sm:py-16 md:py-24`}
+      className={`${border ? "border-t border-line " : ""}section-block`}
     >
-      <div className="mb-6 flex items-baseline gap-3 sm:mb-10 sm:gap-4">
-        <span className="text-xs font-medium tracking-widest text-muted tabular-nums">
-          {num}
-        </span>
-        <h2 className="text-xs font-medium uppercase tracking-widest text-muted">
-          {title}
-        </h2>
+      <div className="section-label">
+        <span className="section-num">{num}</span>
+        <h2 className="section-title">{title}</h2>
       </div>
       {children}
     </section>
@@ -53,61 +49,76 @@ export function SmartLink({ to, children, className }) {
   );
 }
 
+function isExternal(to) {
+  return typeof to === "string" && to.startsWith("http");
+}
+
 // The one card used by every page. Whole card is the click target.
-export function Card({ to, title, meta, blurb, tags, img, cta }) {
+// Pass `img` for a photo; `media` alone for a letter placeholder (projects).
+export function Card({ to, title, meta, blurb, tags, img, cta, media = false }) {
+  const external = isExternal(to);
+  const showMedia = Boolean(img?.src) || media;
+
   return (
-    <SmartLink
-      to={to}
-      className="group block border border-line p-4 transition-[border-color,background-color,transform] duration-200 sm:p-6 hover:border-ink hover:bg-ink/[0.02] focus-visible:border-ink active:border-ink"
-    >
-      {img && (
-        <img
-          src={img.src}
-          alt={img.alt}
-          loading="lazy"
-          decoding="async"
-          className="mb-4 aspect-video w-full border border-line object-cover sm:mb-6"
-        />
-      )}
+    <SmartLink to={to} className="card group">
+      {showMedia ? (
+        <div
+          className={`card-media${img?.src ? "" : " card-media-empty"}`}
+          aria-hidden={img?.src ? undefined : true}
+        >
+          {img?.src ? (
+            <img
+              src={img.src}
+              alt={img.alt || ""}
+              loading="lazy"
+              decoding="async"
+              className="card-img"
+            />
+          ) : (
+            <span className="card-placeholder">
+              {title?.slice(0, 1) || "·"}
+            </span>
+          )}
+        </div>
+      ) : null}
 
-      <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-        <h3 className="text-base font-semibold tracking-tight sm:text-lg">
-          {title}
-        </h3>
-        {meta && (
-          <span className="shrink-0 text-xs text-muted tabular-nums">{meta}</span>
-        )}
+      <div className="card-body">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+          <h3 className="card-title">
+            {title}
+            {external ? (
+              <span className="card-ext" aria-hidden="true">
+                ↗
+              </span>
+            ) : null}
+          </h3>
+          {meta ? <span className="card-meta">{meta}</span> : null}
+        </div>
+
+        {blurb ? <p className="card-blurb">{blurb}</p> : null}
+
+        {tags?.length > 0 ? (
+          <ul className="card-tags">
+            {tags.map((t) => (
+              <li key={t} className="card-tag">
+                {t}
+              </li>
+            ))}
+          </ul>
+        ) : null}
+
+        {cta ? (
+          <span className="card-cta">
+            {cta}
+            {external ? " ↗" : ""}
+          </span>
+        ) : null}
       </div>
-
-      {blurb && (
-        <p className="mt-2 text-sm leading-relaxed text-muted sm:mt-3">
-          {blurb}
-        </p>
-      )}
-
-      {tags?.length > 0 && (
-        <ul className="mt-4 flex flex-wrap gap-2 sm:mt-5">
-          {tags.map((t) => (
-            <li
-              key={t}
-              className="border border-line px-2 py-1 text-xs text-muted"
-            >
-              {t}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {cta && (
-        <span className="mt-4 inline-block text-sm font-medium underline decoration-line underline-offset-4 sm:mt-6 group-hover:decoration-ink">
-          {cta}
-        </span>
-      )}
     </SmartLink>
   );
 }
 
-// Brand icons — SVG only, no extra icon package.
+// Brand icons - SVG only, no extra icon package.
 function IconYouTube({ className }) {
   return (
     <svg
@@ -178,7 +189,7 @@ function IconEmail({ className }) {
   );
 }
 
-// Skill logos — original Simple Icons SVGs in /public/img/skills/
+// Skill logos - original Simple Icons SVGs in /public/img/skills/
 // Masked so they pick up site ink color.
 const skillIconSrc = {
   Rust: asset("img/skills/rust.svg"),
@@ -199,10 +210,7 @@ export function SkillList({ skills }) {
       {skills.map((name) => {
         const src = skillIconSrc[name];
         return (
-          <li
-            key={name}
-            className="inline-flex items-center gap-2 border border-line px-3 py-2 text-sm leading-none"
-          >
+          <li key={name} className="skill-chip">
             {src ? (
               <span
                 className="skill-icon"
@@ -218,8 +226,7 @@ export function SkillList({ skills }) {
   );
 }
 
-const iconBtnClass =
-  "inline-flex h-11 w-11 items-center justify-center border border-line text-ink transition-colors hover:border-ink hover:bg-ink hover:text-bg focus-visible:border-ink active:border-ink active:bg-ink active:text-bg";
+const iconBtnClass = "social-btn";
 
 const contactIcons = {
   youtube: IconYouTube,
@@ -287,7 +294,7 @@ export function SocialLinks({ links, className = "" }) {
       await navigator.clipboard.writeText(value);
       setCopied(true);
     } catch {
-      // ignore — user can still see the tag in title/aria-label
+      // ignore - user can still see the tag in title/aria-label
     }
   }
 
@@ -306,10 +313,8 @@ export function SocialLinks({ links, className = "" }) {
                   aria-label={
                     copied ? "Discord tag copied" : `${label} (click to copy)`
                   }
-                  title={copied ? "Copied" : `${copy} — click to copy`}
-                  className={`${iconBtnClass} cursor-pointer bg-transparent${
-                    copied ? " border-ink bg-ink text-bg" : ""
-                  }`}
+                  title={copied ? "Copied" : `${copy} (click to copy)`}
+                  className={`${iconBtnClass}${copied ? " is-active" : ""}`}
                 >
                   <Icon className="h-5 w-5" />
                 </button>
@@ -339,6 +344,32 @@ export function SocialLinks({ links, className = "" }) {
           Discord tag copied.
         </p>
       ) : null}
+    </div>
+  );
+}
+
+/** Filter chip row - used on Projects. */
+export function FilterChips({ options, value, onChange, label = "Filter" }) {
+  return (
+    <div
+      className="filter-chips"
+      role="group"
+      aria-label={label}
+    >
+      {options.map((opt) => {
+        const active = value === opt.id;
+        return (
+          <button
+            key={opt.id}
+            type="button"
+            className={`filter-chip${active ? " is-active" : ""}`}
+            aria-pressed={active}
+            onClick={() => onChange(opt.id)}
+          >
+            {opt.label}
+          </button>
+        );
+      })}
     </div>
   );
 }

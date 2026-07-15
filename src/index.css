@@ -5,6 +5,7 @@
   --color-ink: #111111;
   --color-muted: #6b6b6b;
   --color-line: #e6e6e6;
+  --color-soft: #f7f7f7;
 
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
@@ -14,6 +15,8 @@ html {
   /* Stop iOS text-size thrash on rotate */
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
+  /* Sticky header offset for hash targets */
+  scroll-padding-top: 4.5rem;
 }
 
 body {
@@ -59,7 +62,23 @@ button {
   outline-offset: 3px;
 }
 
-/* Header row — brand + links share the same height so text sits on one line */
+/* Soft page enter on main content */
+#main {
+  animation: page-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Header row - brand + links share the same height so text sits on one line */
 .header-nav {
   min-height: 3.5rem;
   padding-block: 0;
@@ -99,6 +118,11 @@ button {
   line-height: 1;
   text-transform: uppercase;
   cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.header-menu-btn:hover {
+  border-color: var(--color-ink);
 }
 
 .mobile-nav-panel,
@@ -118,7 +142,7 @@ button {
   }
 }
 
-/* Site wordmark — same vertical box as nav links */
+/* Site wordmark - same vertical box as nav links */
 .brand-mark {
   display: inline-flex;
   align-items: center;
@@ -137,7 +161,7 @@ button {
   color: var(--color-ink);
 }
 
-/* —— Nav links —— */
+/* -- Nav links -- */
 .nav-link {
   position: relative;
   display: inline-flex;
@@ -224,26 +248,290 @@ button {
 
 /* Page hero / section rhythm helpers used across pages */
 .page-hero {
-  padding-block: 3.5rem;
+  padding-block: 3.25rem 0.5rem;
 }
 
 @media (min-width: 640px) {
   .page-hero {
-    padding-block: 5.5rem;
+    padding-block: 4.75rem 0.75rem;
   }
 }
 
 @media (min-width: 768px) {
   .page-hero {
-    padding-block: 7rem;
+    padding-block: 6rem 1rem;
   }
 }
 
 .page-title {
   font-size: clamp(1.875rem, 6vw, 3rem);
   font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: -0.025em;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.page-lead {
+  margin: 1rem 0 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-muted);
+}
+
+@media (min-width: 640px) {
+  .page-lead {
+    margin-top: 1.25rem;
+    font-size: 1.05rem;
+  }
+}
+
+/* Sections */
+.section-block {
+  padding-block: 2.75rem;
+}
+
+@media (min-width: 640px) {
+  .section-block {
+    padding-block: 3.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-block {
+    padding-block: 5rem;
+  }
+}
+
+.section-label {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .section-label {
+    gap: 1rem;
+    margin-bottom: 2.25rem;
+  }
+}
+
+.section-num,
+.section-title {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.section-num {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Cards */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg);
+  color: inherit;
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    border-color 0.22s ease,
+    background-color 0.22s ease,
+    box-shadow 0.22s ease,
+    transform 0.22s ease;
+}
+
+.card-media {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-bottom: 1px solid var(--color-line);
+  background: var(--color-soft);
+}
+
+.card-media-empty {
+  display: grid;
+  place-items: center;
+}
+
+.card-placeholder {
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--color-line);
+  user-select: none;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1rem;
+}
+
+@media (min-width: 640px) {
+  .card-body {
+    padding: 1.35rem 1.35rem 1.4rem;
+  }
+}
+
+.card-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+@media (min-width: 640px) {
+  .card-title {
+    font-size: 1.0625rem;
+  }
+}
+
+.card-ext {
+  margin-left: 0.35rem;
+  font-size: 0.85em;
+  font-weight: 500;
+  color: var(--color-muted);
+}
+
+.card-meta {
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.card-blurb {
+  margin: 0.55rem 0 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card-tag {
+  border: 1px solid var(--color-line);
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.02em;
+  color: var(--color-muted);
+}
+
+.card-cta {
+  margin-top: auto;
+  padding-top: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--color-line);
+  transition: text-decoration-color 0.2s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    border-color: var(--color-ink);
+    background: color-mix(in srgb, var(--color-ink) 2%, var(--color-bg));
+    box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
+  }
+
+  .card:hover .card-img {
+    transform: scale(1.035);
+  }
+
+  .card:hover .card-cta {
+    text-decoration-color: var(--color-ink);
+  }
+
+  .card:hover .card-ext {
+    color: var(--color-ink);
+  }
+}
+
+.card:focus-visible {
+  border-color: var(--color-ink);
+}
+
+/* Filter chips */
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .filter-chips {
+    margin-bottom: 2rem;
+  }
+}
+
+.filter-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.25rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-bg);
+  color: var(--color-muted);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.filter-chip:hover {
+  border-color: var(--color-ink);
+  color: var(--color-ink);
+}
+
+.filter-chip.is-active {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+/* Skills */
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--color-line);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1;
 }
 
 /* Official skill SVGs, recolored to site ink via mask */
@@ -257,13 +545,81 @@ button {
   mask: var(--skill-icon) center / contain no-repeat;
 }
 
+/* Social buttons */
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid var(--color-line);
+  background: transparent;
+  color: var(--color-ink);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.social-btn:hover,
+.social-btn.is-active {
+  border-color: var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-bg);
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--color-line);
+  background: linear-gradient(
+    to bottom,
+    var(--color-bg) 0%,
+    var(--color-soft) 100%
+  );
+}
+
+.footer-kicker {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.footer-title {
+  margin: 1.25rem 0 0;
+  max-width: 28rem;
+  font-size: clamp(1.35rem, 3.5vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+.footer-note {
+  margin: 0.85rem 0 0;
+  max-width: 28rem;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.footer-meta {
+  margin: 2.5rem 0 0;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
 /* Home: full-bleed Genshin scenery hero (breaks out of .site-shell main) */
 .home-hero {
   position: relative;
   left: 50%;
   width: 100vw;
   margin-left: -50vw;
-  min-height: min(72vh, 40rem);
+  min-height: min(78vh, 44rem);
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -279,6 +635,7 @@ button {
   max-width: none;
   object-fit: cover;
   object-position: 58% center; /* keep Inazuma castle + figure in frame */
+  transform: scale(1.02);
 }
 
 /* Soft scrim so white type stays readable without drowning the photo */
@@ -288,38 +645,38 @@ button {
   background:
     linear-gradient(
       105deg,
-      rgba(10, 10, 12, 0.72) 0%,
-      rgba(10, 10, 12, 0.42) 42%,
-      rgba(10, 10, 12, 0.12) 72%,
-      rgba(10, 10, 12, 0.2) 100%
+      rgba(10, 10, 12, 0.74) 0%,
+      rgba(10, 10, 12, 0.44) 42%,
+      rgba(10, 10, 12, 0.14) 72%,
+      rgba(10, 10, 12, 0.22) 100%
     ),
     linear-gradient(
       to top,
-      rgba(10, 10, 12, 0.45) 0%,
-      transparent 48%
+      rgba(10, 10, 12, 0.5) 0%,
+      transparent 52%
     );
   pointer-events: none;
 }
 
 .home-hero-copy {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
   padding-top: 5rem;
-  padding-bottom: 2.5rem;
+  padding-bottom: 2.75rem;
 }
 
 @media (min-width: 640px) {
   .home-hero-copy {
     padding-top: 6.5rem;
-    padding-bottom: 3.5rem;
+    padding-bottom: 3.75rem;
   }
 }
 
 @media (min-width: 768px) {
   .home-hero-copy {
     padding-top: 8rem;
-    padding-bottom: 4.5rem;
+    padding-bottom: 4.75rem;
   }
 }
 
@@ -336,24 +693,24 @@ button {
   margin: 0;
   font-size: 0.75rem;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(255, 255, 255, 0.92);
 }
 
 .home-hero-title {
   margin: 1.25rem 0 0;
-  max-width: 18ch;
-  font-size: clamp(2rem, 7vw, 3.25rem);
+  max-width: 16ch;
+  font-size: clamp(2.15rem, 7.2vw, 3.5rem);
   font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.03em;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
   text-wrap: balance;
 }
 
 .home-hero-sub {
-  margin: 1rem 0 0;
-  max-width: 28rem;
+  margin: 1.05rem 0 0;
+  max-width: 30rem;
   font-size: 0.95rem;
   line-height: 1.55;
   color: rgba(255, 255, 255, 0.92);
@@ -370,14 +727,14 @@ button {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
-  margin-top: 1.5rem;
+  margin-top: 1.65rem;
 }
 
 .home-hero-cta {
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  padding: 0 1.1rem;
+  padding: 0 1.15rem;
   border: 1px solid rgba(255, 255, 255, 0.85);
   background: #fff;
   color: var(--color-ink);
@@ -388,7 +745,7 @@ button {
   text-decoration: none;
   text-transform: uppercase;
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease,
-    opacity 0.2s ease;
+    opacity 0.2s ease, transform 0.2s ease;
 }
 
 .home-hero-cta-ghost {
@@ -399,7 +756,8 @@ button {
 
 @media (hover: hover) and (pointer: fine) {
   .home-hero-cta:hover {
-    opacity: 0.92;
+    opacity: 0.94;
+    transform: translateY(-1px);
   }
 
   .home-hero-cta-ghost:hover {
@@ -415,7 +773,7 @@ button {
   outline-offset: 3px;
 }
 
-/* Sakura petals — light, decorative, hero-only */
+/* Sakura petals - light, decorative, hero-only */
 .sakura-layer {
   position: absolute;
   inset: 0;
@@ -443,10 +801,6 @@ button {
   will-change: transform, opacity;
 }
 
-.home-hero-copy {
-  z-index: 2;
-}
-
 @keyframes sakura-fall {
   0% {
     transform: translate3d(0, -10%, 0) rotate(0deg);
@@ -464,6 +818,134 @@ button {
   }
 }
 
+/* TikTok embeds */
+.tiktok-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .tiktok-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .tiktok-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.tiktok-card {
+  margin: 0;
+  border: 1px solid var(--color-line);
+  background: var(--color-soft);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tiktok-frame {
+  display: block;
+  width: 100%;
+  min-height: 28rem;
+  height: min(72vh, 36rem);
+  border: 0;
+  background: #000;
+}
+
+.tiktok-caption {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--color-line);
+  background: var(--color-bg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.tiktok-caption a {
+  color: var(--color-ink);
+  text-decoration: none;
+}
+
+.tiktok-caption a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Empty-state CTA (TikTok profile) */
+.empty-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-start;
+  border: 1px solid var(--color-line);
+  padding: 1.25rem;
+  background: var(--color-soft);
+}
+
+@media (min-width: 640px) {
+  .empty-cta {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 1.75rem;
+  }
+}
+
+.empty-cta p {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--color-muted);
+}
+
+.empty-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0 1.1rem;
+  border: 1px solid var(--color-ink);
+  background: var(--color-ink);
+  color: var(--color-bg);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.empty-cta-btn:hover {
+  opacity: 0.9;
+}
+
+/* Portrait polish */
+.about-portrait {
+  aspect-ratio: 1;
+  width: 10rem;
+  border: 1px solid var(--color-line);
+  object-fit: cover;
+  background: var(--color-soft);
+}
+
+@media (min-width: 640px) {
+  .about-portrait {
+    width: 12rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .about-portrait {
+    width: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -473,6 +955,10 @@ button {
   *::after {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
+  }
+
+  #main {
+    animation: none;
   }
 
   .nav-link::after {
@@ -485,5 +971,13 @@ button {
 
   .sakura-layer {
     display: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .card:hover .card-img {
+    transform: none;
   }
 }

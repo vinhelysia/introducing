@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "homepage": "https://vinhelysia.github.io/introducing",
+  "homepage": "https://vinhelysia.io.vn",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

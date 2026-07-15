@@ -6,8 +6,8 @@ export default function Content() {
     <>
       <section className="page-hero">
         <h1 className="page-title">Content</h1>
-        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-base">
-          Abyss clears, lyre covers, and short clips. Full channels linked below.
+        <p className="page-lead">
+          Abyss clears, lyre covers and short clips. Full channels linked below.
         </p>
       </section>
 
@@ -20,7 +20,7 @@ export default function Content() {
             rel="noopener noreferrer"
             className="font-medium underline decoration-line underline-offset-4 hover:decoration-ink"
           >
-            Full channel here.
+            Full channel here ↗
           </a>
         </p>
 
@@ -49,23 +49,50 @@ export default function Content() {
             rel="noopener noreferrer"
             className="font-medium underline decoration-line underline-offset-4 hover:decoration-ink"
           >
-            Profile here.
+            Profile here ↗
           </a>
         </p>
 
         {tiktok.posts.length > 0 ? (
-          <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
+          <div className="tiktok-grid">
             {tiktok.posts.map((p) => (
-              <Card
-                key={p.url}
-                to={p.url}
-                title={p.title}
-                img={p.img}
-                cta="Open"
-              />
+              <figure key={p.id} className="tiktok-card">
+                <iframe
+                  title={p.title}
+                  src={`https://www.tiktok.com/embed/v2/${p.id}`}
+                  className="tiktok-frame"
+                  allow="encrypted-media; fullscreen; picture-in-picture"
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                />
+                <figcaption className="tiktok-caption">
+                  <a
+                    href={`https://www.tiktok.com/@vinhelysia1/video/${p.id}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {p.title} ↗
+                  </a>
+                </figcaption>
+              </figure>
             ))}
           </div>
-        ) : null}
+        ) : (
+          <div className="empty-cta">
+            <p>
+              Clips live on TikTok. Open the profile for the latest lyre covers and
+              teapot shares.
+            </p>
+            <a
+              href={tiktok.profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="empty-cta-btn"
+            >
+              Open TikTok ↗
+            </a>
+          </div>
+        )}
       </Section>
     </>
   );

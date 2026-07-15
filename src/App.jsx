@@ -3,6 +3,8 @@ import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { me, links } from "./content";
 import { SocialLinks } from "./ui";
 
+const SITE = "https://vinhelysia.io.vn";
+
 const nav = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About me" },
@@ -10,25 +12,66 @@ const nav = [
   { to: "/projects", label: "Projects" },
 ];
 
-const titles = {
-  "/": "VinhElysia — CS student, Genshin creator, game dev",
-  "/about": "About — VinhElysia",
-  "/content": "Content — VinhElysia",
-  "/projects": "Projects — VinhElysia",
+const metaByPath = {
+  "/": {
+    title: "VinhElysia | Personal website",
+    description: "Personal website of VinhElysia.",
+  },
+  "/about": {
+    title: "About | VinhElysia",
+    description: "About VinhElysia.",
+  },
+  "/content": {
+    title: "Content | VinhElysia",
+    description: "Videos and clips from VinhElysia.",
+  },
+  "/projects": {
+    title: "Projects | VinhElysia",
+    description: "Projects from VinhElysia.",
+  },
 };
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
   useEffect(() => {
-    if (!hash) window.scrollTo(0, 0);
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    // Wait a tick so the target exists after route paint.
+    const id = decodeURIComponent(hash.slice(1));
+    const t = window.setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+    return () => window.clearTimeout(t);
   }, [pathname, hash]);
   return null;
 }
 
-function DocumentTitle() {
+function DocumentMeta() {
   const { pathname } = useLocation();
   useEffect(() => {
-    document.title = titles[pathname] || "VinhElysia";
+    const meta = metaByPath[pathname] || metaByPath["/"];
+    document.title = meta.title;
+
+    const desc = document.querySelector('meta[name="description"]');
+    if (desc) desc.setAttribute("content", meta.description);
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) ogTitle.setAttribute("content", meta.title);
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) ogDesc.setAttribute("content", meta.description);
+
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.setAttribute("content", `${SITE}${pathname === "/" ? "" : pathname}`);
+
+    const twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (twTitle) twTitle.setAttribute("content", meta.title);
+
+    const twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (twDesc) twDesc.setAttribute("content", meta.description);
   }, [pathname]);
   return null;
 }
@@ -95,7 +138,7 @@ export default function App() {
   return (
     <>
       <ScrollToTop />
-      <DocumentTitle />
+      <DocumentMeta />
 
       <a
         href="#main"
@@ -156,21 +199,24 @@ export default function App() {
         <Outlet />
       </main>
 
-      <footer id="contact" className="border-t border-line">
-        <div className="site-shell py-12 sm:py-16 md:py-24">
-          <h2 className="text-xs font-medium uppercase tracking-widest text-muted">
-            Get in touch
+      <footer id="contact" className="site-footer">
+        <div className="site-shell py-12 sm:py-16 md:py-20">
+          <p className="footer-kicker">Get in touch</p>
+
+          <h2 className="footer-title">
+            Want a commission, collab, or just want to talk games?
           </h2>
 
-          <p className="mt-6 max-w-xl text-xl font-semibold leading-snug tracking-tight sm:mt-8 sm:text-2xl md:text-3xl">
-            Want a commission, collab, or just want to talk games? Message me.
+          <p className="footer-note">
+            I take Genshin and HSR grind commissions. Message me on YouTube,
+            TikTok or GitHub.
           </p>
 
           <div className="mt-8 sm:mt-10">
             <SocialLinks links={links} />
           </div>
 
-          <p className="mt-12 text-xs text-muted sm:mt-16">
+          <p className="footer-meta">
             © {new Date().getFullYear()} {me.name}
           </p>
         </div>

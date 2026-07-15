@@ -6,8 +6,8 @@ export default function About() {
     <>
       <section className="page-hero">
         <h1 className="page-title">About me</h1>
-        <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted sm:mt-6 sm:text-base">
-          CS student, builder, and Genshin creator.
+        <p className="page-lead">
+          CS student, builder and Genshin creator. Based in Vietnam.
         </p>
       </section>
 
@@ -21,7 +21,7 @@ export default function About() {
               height={480}
               loading="lazy"
               decoding="async"
-              className="aspect-square w-40 border border-line object-cover sm:w-48 md:w-full"
+              className="about-portrait"
             />
           </div>
 
