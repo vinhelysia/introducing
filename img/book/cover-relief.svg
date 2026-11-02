@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 520" fill="none">
+  <defs>
+    <linearGradient id="silver" x1="20" y1="0" x2="270" y2="110" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ece8d2"/><stop offset=".3" stop-color="#a8aaa0"/>
+      <stop offset=".55" stop-color="#dfdcca"/><stop offset="1" stop-color="#838c8b"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="40" x2="300" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#efe7bd"/><stop offset=".45" stop-color="#859eb6"/>
+      <stop offset=".75" stop-color="#b5d5e5"/><stop offset="1" stop-color="#c3b17e"/>
+    </linearGradient>
+  </defs>
+  <path d="M12 43V13h276v30M31 43V26q16-23 32 0v17m7 0V26q16-23 32 0v17m7 0V26q16-23 32 0v17m7 0V26q16-23 32 0v17m7 0V26q16-23 32 0v17m7 0V26q16-23 32 0v17" stroke="#d9d7c4" stroke-width="2" opacity=".7"/>
+  <path d="M12 98Q150-2 288 98V65Q150-35 12 65Z" fill="url(#silver)" stroke="#e9e1bd" stroke-width="2"/>
+  <path d="M20 83Q150-9 280 83M25 73Q150-12 275 73" stroke="#6d797c" stroke-width="1.5"/>
+  <path d="M17 102v313q0 17 16 26M25 106v293q0 15 11 24M283 102v313q0 17-16 26M275 106v293q0 15-11 24" stroke="url(#edge)" stroke-width="3"/>
+  <path d="m17 147 5 10-5 10-5-10Zm266 0 5 10-5 10-5-10ZM17 345l5 10-5 10-5-10Zm266 0 5 10-5 10-5-10Z" fill="#bfd9e6"/>
+  <path d="M9 124v283q0 30 24 44M291 124v283q0 30-24 44" stroke="#d1c492" opacity=".55"/>
+  <path d="M12 454q138 58 276 0v31q-138 56-276 0Z" fill="url(#silver)" stroke="#e5dcaf" stroke-width="2"/>
+  <path d="M20 469q130 51 260 0M24 481q126 45 252 0" stroke="#79847f" stroke-width="1.5"/>
+  <path d="m150 441 4 12 12 4-12 4-4 12-4-12-12-4 12-4Z" fill="#e8ddad" stroke="#7d8c90"/>
+  <path d="m42 463 4 5 4-5m24 9 4 5 4-5m24 5 4 5 4-5m72 0 4 5 4-5m24-5 4 5 4-5m24-9 4 5 4-5" stroke="#d9e5df" stroke-width="2"/>
+  <path d="m45 122 2 6 6 2-6 2-2 6-2-6-6-2 6-2Zm210 0 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z" fill="#b6d8e9" opacity=".7"/>
+  <path d="M40 42h220M40 498h220" stroke="#e3d2a1" stroke-dasharray="2 8"/>
+</svg>
