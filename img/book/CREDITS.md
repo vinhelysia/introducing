@@ -1,6 +1,6 @@
 # Book artwork sources
 
-The static character illustrations below are existing game artwork, not AI-generated project assets. Copyright belongs to HoYoverse / miHoYo and the respective rights holders. The files are mirrored locally for this design preview; no ownership or commercial redistribution license is claimed.
+The original `elysia.webp` and `cyrene.webp` character illustrations are existing game artwork, not AI-generated project assets. Copyright belongs to HoYoverse / miHoYo and the respective rights holders. The files are mirrored locally for this design preview; no ownership or commercial redistribution license is claimed. User-supplied wallpapers are documented separately below and are not represented as official game assets.
 
 | Local file | Character | Source page | Downloaded image |
 | --- | --- | --- | --- |
@@ -24,3 +24,13 @@ The cover medallion, borders, page-turn effects and new starry/ruins/water backd
 `metal-corner.svg` is a project-authored decorative vector inspired by the metal corner mounts in those screenshots. It is drawn in SVG and mirrored with CSS, not extracted from a game image. The two hardcover boards, spine, paper edges and fold lighting are CSS; no AI-generated raster image is used.
 
 `cover-relief.svg` and the expanded `AstralSeal` React SVG are project-authored front-cover decorations: silver arches, edge engravings, moon phases and orbital rings. They are code-drawn interpretations of the user's references, not ripped game assets or generated raster images.
+
+## Wallpapers supplied by the user — 2026-11-08
+
+The original JPEGs remain untouched in `public/img/`. The filenames mention WallpaperFlare, but no exact source page or commercial reuse license was supplied or inferred. User provenance is recorded here rather than shown as a generic caption in the book; visible captions retain the available artist signatures. No ownership or permission to redistribute commercially is asserted.
+
+- `wallpaperflare.com_wallpaper (2).jpg` (3840×2400): smiling Elysia artwork, original artist not verified. Used for About. Derivatives: `art_elysia_smile_main_640.webp` and `art_elysia_smile_main_1280.webp`.
+- `wallpaperflare.com_wallpaper.jpg` (2568×1280): blue flag above clouds; visible signature reads “Art by: Iriza_katou”. Artist identity/source/rights have not been independently verified. Used for Contact. Derivatives: `art_blue_flag_main_640.webp` and `art_blue_flag_main_1280.webp`.
+- `wallpaperflare.com_wallpaper (1).jpg` (4096×2158): blue chess scene; visible signature reads “ILLUSTRATION BY Ui”. Artist identity/source/rights have not been independently verified. Used for ToS. Derivatives: `art_blue_chess_main_640.webp` and `art_blue_chess_main_1280.webp`.
+
+Derivatives preserve the full compositions and visible signatures: EXIF orientation correction, proportional resize and WebP encoding only; no cropping, generative editing or watermark removal. `scripts/prepare-book-images.py` reproduces them using Pillow (quality 82, method 6). Pillow is needed only to regenerate these committed assets, not for the website or normal Vite builds. The six derivatives total 327,270 bytes; the largest is 143,786 bytes. Services keeps the existing Cyrene clip.
