@@ -1,24 +1,68 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 520" fill="none">
   <defs>
-    <linearGradient id="silver" x1="20" y1="0" x2="270" y2="110" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#ece8d2"/><stop offset=".3" stop-color="#a8aaa0"/>
-      <stop offset=".55" stop-color="#dfdcca"/><stop offset="1" stop-color="#838c8b"/>
+    <linearGradient id="silver-arch" x1="16" y1="8" x2="284" y2="106" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f4eed6"/>
+      <stop offset=".25" stop-color="#b9beb8"/>
+      <stop offset=".5" stop-color="#fff8e1"/>
+      <stop offset=".75" stop-color="#959f9e"/>
+      <stop offset="1" stop-color="#e3dbb9"/>
     </linearGradient>
-    <linearGradient id="edge" x1="0" y1="40" x2="300" y2="480" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#efe7bd"/><stop offset=".45" stop-color="#859eb6"/>
-      <stop offset=".75" stop-color="#b5d5e5"/><stop offset="1" stop-color="#c3b17e"/>
+    <linearGradient id="lower-arch" x1="16" y1="448" x2="284" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e5ddc0"/>
+      <stop offset=".28" stop-color="#9aa3a2"/>
+      <stop offset=".52" stop-color="#f7f0d6"/>
+      <stop offset=".78" stop-color="#8d9695"/>
+      <stop offset="1" stop-color="#dfd5b0"/>
     </linearGradient>
+    <linearGradient id="pilaster" x1="0" y1="85" x2="300" y2="455" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f1e7bf"/>
+      <stop offset=".35" stop-color="#93adc4"/>
+      <stop offset=".68" stop-color="#c3dfee"/>
+      <stop offset="1" stop-color="#d1bf8b"/>
+    </linearGradient>
+    <radialGradient id="inner-halo" cx="50%" cy="44%" r="48%">
+      <stop offset="0" stop-color="#a6d4f2" stop-opacity=".14"/>
+      <stop offset=".7" stop-color="#7fa8d0" stop-opacity=".04"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <path d="M12 43V13h276v30M31 43V26q16-23 32 0v17m7 0V26q16-23 32 0v17m7 0V26q16-23 32 0v17m7 0V26q16-23 32 0v17m7 0V26q16-23 32 0v17m7 0V26q16-23 32 0v17" stroke="#d9d7c4" stroke-width="2" opacity=".7"/>
-  <path d="M12 98Q150-2 288 98V65Q150-35 12 65Z" fill="url(#silver)" stroke="#e9e1bd" stroke-width="2"/>
-  <path d="M20 83Q150-9 280 83M25 73Q150-12 275 73" stroke="#6d797c" stroke-width="1.5"/>
-  <path d="M17 102v313q0 17 16 26M25 106v293q0 15 11 24M283 102v313q0 17-16 26M275 106v293q0 15-11 24" stroke="url(#edge)" stroke-width="3"/>
-  <path d="m17 147 5 10-5 10-5-10Zm266 0 5 10-5 10-5-10ZM17 345l5 10-5 10-5-10Zm266 0 5 10-5 10-5-10Z" fill="#bfd9e6"/>
-  <path d="M9 124v283q0 30 24 44M291 124v283q0 30-24 44" stroke="#d1c492" opacity=".55"/>
-  <path d="M12 454q138 58 276 0v31q-138 56-276 0Z" fill="url(#silver)" stroke="#e5dcaf" stroke-width="2"/>
-  <path d="M20 469q130 51 260 0M24 481q126 45 252 0" stroke="#79847f" stroke-width="1.5"/>
-  <path d="m150 441 4 12 12 4-12 4-4 12-4-12-12-4 12-4Z" fill="#e8ddad" stroke="#7d8c90"/>
-  <path d="m42 463 4 5 4-5m24 9 4 5 4-5m24 5 4 5 4-5m72 0 4 5 4-5m24-5 4 5 4-5m24-9 4 5 4-5" stroke="#d9e5df" stroke-width="2"/>
-  <path d="m45 122 2 6 6 2-6 2-2 6-2-6-6-2 6-2Zm210 0 2 6 6 2-6 2-2 6-2-6-6-2 6-2Z" fill="#b6d8e9" opacity=".7"/>
-  <path d="M40 42h220M40 498h220" stroke="#e3d2a1" stroke-dasharray="2 8"/>
+
+  <!-- Subtle central celestial aura -->
+  <ellipse cx="150" cy="235" rx="118" ry="165" fill="url(#inner-halo)"/>
+
+  <!-- Outer fine engraving frame -->
+  <rect x="10" y="10" width="280" height="500" rx="4" stroke="#dfd3a7" stroke-width="1" stroke-opacity=".55"/>
+  <path d="M36 36H264M36 498H264" stroke="#e8d8a8" stroke-width="1" stroke-dasharray="2 6" opacity=".75"/>
+
+  <!-- Top classical arcade frieze -->
+  <path d="M14 42V14H286V42" stroke="#e4dec8" stroke-width="1.5" opacity=".75"/>
+  <path d="M30 42V27C30 15 46 15 46 27V42M54 42V27C54 15 70 15 70 27V42M78 42V27C78 15 94 15 94 27V42M102 42V27C102 15 118 15 118 27V42M126 42V27C126 15 142 15 142 27V42M158 42V27C158 15 174 15 174 27V42M182 42V27C182 15 198 15 198 27V42M206 42V27C206 15 222 15 222 27V42M230 42V27C230 15 246 15 246 27V42M254 42V27C254 15 270 15 270 27V42" stroke="#dcd8c4" stroke-width="1.35" opacity=".68"/>
+
+  <!-- Top sweeping silver-gold arch banner -->
+  <path d="M12 92C98 14 202 14 288 92V62C202 -14 98 -14 12 62Z" fill="url(#silver-arch)" stroke="#f3ebd0" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M18 79C100 8 200 8 282 79" stroke="#5f6b6e" stroke-width="1.25" opacity=".85"/>
+  <path d="M22 70C102 2 198 2 278 70" stroke="#fffbe8" stroke-width="1" opacity=".75"/>
+  <path d="M150 18L152.5 24.5L159 27L152.5 29.5L150 36L147.5 29.5L141 27L147.5 24.5Z" fill="#fff6d6" stroke="#737e80" stroke-width=".8"/>
+
+  <!-- Side fluted pilasters with smooth curved terminals -->
+  <path d="M16 98V414C16 428 23 437 34 443M24 103V408C24 420 29 428 38 434M284 98V414C284 428 277 437 266 443M276 103V408C276 420 271 428 262 434" stroke="url(#pilaster)" stroke-width="2.2" stroke-linecap="round"/>
+  <path d="M10 118V408C10 428 20 442 36 450M290 118V408C290 428 280 442 264 450" stroke="#d9cb9a" stroke-width="1" stroke-linecap="round" opacity=".58"/>
+
+  <!-- Side pilaster diamond jewels & crescents -->
+  <path d="M16 154L20.5 163L16 172L11.5 163ZM284 154L288.5 163L284 172L279.5 163ZM16 344L20.5 353L16 362L11.5 353ZM284 344L288.5 353L284 362L279.5 353Z" fill="#cae3f1" stroke="#6f8799" stroke-width=".7"/>
+  <circle cx="20" cy="258" r="3" fill="#efe4bc" stroke="#6e7c85" stroke-width=".8"/>
+  <circle cx="280" cy="258" r="3" fill="#efe4bc" stroke="#6e7c85" stroke-width=".8"/>
+
+  <!-- Upper & lower corner astrolabe stars -->
+  <path d="M44 114L46.2 120.2L52.4 122.4L46.2 124.6L44 130.8L41.8 124.6L35.6 122.4L41.8 120.2ZM256 114L258.2 120.2L264.4 122.4L258.2 124.6L256 130.8L253.8 124.6L247.6 122.4L253.8 120.2Z" fill="#c7e2f2" opacity=".82"/>
+  <path d="M32 104C44 90 62 80 84 76M268 104C256 90 238 80 216 76" stroke="#c7dce8" stroke-width=".9" stroke-dasharray="2 4" opacity=".55"/>
+
+  <!-- Bottom pedimental arch banner -->
+  <path d="M12 456C104 510 196 510 288 456V484C196 536 104 536 12 484Z" fill="url(#lower-arch)" stroke="#eee3ba" stroke-width="1.8" stroke-linejoin="round"/>
+  <path d="M19 469C106 518 194 518 281 469" stroke="#687370" stroke-width="1.2" opacity=".85"/>
+  <path d="M23 479C108 525 192 525 277 479" stroke="#fffbe8" stroke-width="1" opacity=".72"/>
+
+  <!-- Laurel ticks & central crest star on lower arch -->
+  <path d="M44 464L48 469L52 464M68 472L72 477L76 472M92 477L96 482L100 477M200 477L204 482L208 477M224 472L228 477L232 472M248 464L252 469L256 464" stroke="#e4efe9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M150 468L153.5 478.5L164 482L153.5 485.5L150 496L146.5 485.5L136 482L146.5 478.5Z" fill="#f5ebc3" stroke="#6c7b80" stroke-width="1"/>
 </svg>

@@ -1,23 +1,61 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
   <defs>
-    <linearGradient id="metal" x1="15" y1="3" x2="112" y2="112" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff4cd"/><stop offset=".25" stop-color="#b1a475"/>
-      <stop offset=".48" stop-color="#ede3ae"/><stop offset=".7" stop-color="#8e8157"/><stop offset="1" stop-color="#d1c18b"/>
+    <linearGradient id="brass-outer" x1="8" y1="4" x2="114" y2="114" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff6d4"/>
+      <stop offset=".22" stop-color="#d8c68e"/>
+      <stop offset=".48" stop-color="#f5ebc2"/>
+      <stop offset=".74" stop-color="#9b8b5c"/>
+      <stop offset="1" stop-color="#cfc089"/>
     </linearGradient>
-    <linearGradient id="coin" x1="63" y1="16" x2="104" y2="61" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#dcd2a1"/><stop offset="1" stop-color="#8e8157"/>
+    <linearGradient id="brass-inner" x1="18" y1="12" x2="104" y2="98" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#e5d7a3"/>
+      <stop offset=".5" stop-color="#9f8f60"/>
+      <stop offset="1" stop-color="#6e613e"/>
+    </linearGradient>
+    <radialGradient id="medallion-core" cx="50%" cy="42%" r="58%">
+      <stop offset="0" stop-color="#4c7aa7"/>
+      <stop offset=".55" stop-color="#1f3560"/>
+      <stop offset="1" stop-color="#101c36"/>
+    </radialGradient>
+    <linearGradient id="rim-highlight" x1="0" y1="0" x2="120" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fffdf0"/>
+      <stop offset=".6" stop-color="#e5d6a0"/>
+      <stop offset="1" stop-color="#85764c"/>
     </linearGradient>
   </defs>
-  <path d="M4 4h112v112h-17l-7-43C88 51 70 33 48 29L4 21Z" fill="#695c3d" stroke="#514933" stroke-width="5" stroke-linejoin="round"/>
-  <path d="M4 4h112v112h-17l-7-43C88 51 70 33 48 29L4 21Z" fill="url(#metal)" stroke="#f6ecc1" stroke-width="2" stroke-linejoin="round"/>
-  <path d="M10 10h100v100h-6l-6-39C93 47 73 28 49 24l-39-8Z" stroke="#776b46" stroke-width="1.5"/>
-  <path d="M15 11l53 20M48 11l26 17M79 10v16M109 11 94 27M110 40H97M110 68 96 48M108 98 92 55" stroke="#f7edc2" stroke-width="2"/>
-  <path d="m20 11 49 16M53 10l19 13M106 12 96 22M110 73 99 55" stroke="#8e8055" stroke-width="1"/>
-  <circle cx="82" cy="39" r="29" fill="url(#metal)" stroke="#756844" stroke-width="2"/>
-  <circle cx="82" cy="39" r="25" stroke="#fff2c5" stroke-width="2"/>
-  <circle cx="82" cy="39" r="21" fill="url(#coin)" stroke="#7e704b" stroke-width="1.5"/>
-  <circle cx="82" cy="39" r="17" stroke="#e8dca9"/>
-  <path d="m82 25 4 9 10 1-8 7 3 10-9-5-9 5 3-10-8-7 10-1Z" fill="#f3e5b0" stroke="#87764a" stroke-width="1.5"/>
-  <path d="m82 29 2 8 8-1-6 5 2 7-6-4-6 4 2-7-6-5 8 1Z" fill="#c0af79"/>
-  <path d="M6 5h109v109" stroke="#fff8de" stroke-width="1.5"/>
+
+  <!-- Outer shadow base -->
+  <path d="M3 3H117V117H97C95 77 86 56 67 39C51 25 32 22 3 21Z" fill="#463d28" stroke="#3b3321" stroke-width="3" stroke-linejoin="round"/>
+
+  <!-- Main gilded corner body with smooth cubic inner curve -->
+  <path d="M4 4H116V116H98C96 77 87 55 68 38C52 24 33 21 4 20Z" fill="url(#brass-outer)" stroke="url(#rim-highlight)" stroke-width="2" stroke-linejoin="round"/>
+
+  <!-- Recessed inner bevel plate -->
+  <path d="M11 10H110V109H102C99 74 89 52 71 35C54 20 35 16 11 15Z" fill="url(#brass-inner)" fill-opacity=".42" stroke="#766844" stroke-width="1.35" stroke-linejoin="round"/>
+  <path d="M13 12H108V105" stroke="#fff7d8" stroke-width="1" stroke-opacity=".7" stroke-linecap="round"/>
+
+  <!-- Smooth filigree scroll curves along both wings -->
+  <path d="M22 14C42 15 58 21 71 32M45 13C60 16 72 22 83 32M106 96C104 78 98 63 88 50M107 74C104 61 98 49 89 39" stroke="#f7eed0" stroke-width="1.4" stroke-linecap="round" opacity=".82"/>
+  <path d="M24 15.5C43 16.5 58 22.5 70 33M104.5 94C102.5 77 96.5 63 87 51" stroke="#6c5e3c" stroke-width="1" stroke-linecap="round" opacity=".75"/>
+
+  <!-- Delicate corner rivets -->
+  <circle cx="16" cy="13" r="2" fill="#fff6d4" stroke="#6f613e" stroke-width=".9"/>
+  <circle cx="36" cy="14" r="1.8" fill="#fff6d4" stroke="#6f613e" stroke-width=".9"/>
+  <circle cx="106" cy="103" r="2" fill="#fff6d4" stroke="#6f613e" stroke-width=".9"/>
+  <circle cx="105" cy="83" r="1.8" fill="#fff6d4" stroke="#6f613e" stroke-width=".9"/>
+  <circle cx="108" cy="12" r="2.2" fill="#fff6d4" stroke="#6f613e" stroke-width="1"/>
+
+  <!-- Celestial boss medallion -->
+  <circle cx="83" cy="37" r="27" fill="url(#brass-outer)" stroke="#6d5f3d" stroke-width="1.8"/>
+  <circle cx="83" cy="37" r="23.5" stroke="#fff5cf" stroke-width="1.4"/>
+  <circle cx="83" cy="37" r="20" fill="url(#medallion-core)" stroke="#9e8e5f" stroke-width="1.4"/>
+  <circle cx="83" cy="37" r="16.2" stroke="#b9dcf2" stroke-width=".9" stroke-dasharray="1.8 2.4" opacity=".8"/>
+
+  <!-- 8-point compass star inside medallion -->
+  <path d="M83 19L86.2 31.2L97 27L88.8 35.2L101 37L88.8 38.8L97 47L86.2 42.8L83 55L79.8 42.8L69 47L77.2 38.8L65 37L77.2 35.2L69 27L79.8 31.2Z" fill="#dfd2a1" opacity=".85"/>
+  <path d="M83 21L85.8 33.2L98 37L85.8 40.8L83 53L80.2 40.8L68 37L80.2 33.2Z" fill="#fff6d6" stroke="#7b6b43" stroke-width="1" stroke-linejoin="round"/>
+  <circle cx="83" cy="37" r="3.2" fill="#89bee5" stroke="#fff8de" stroke-width="1"/>
+
+  <!-- Top-right outer specular edge -->
+  <path d="M5 5.5H114.5V115" stroke="#fffbe8" stroke-width="1.4" stroke-linecap="round"/>
 </svg>
